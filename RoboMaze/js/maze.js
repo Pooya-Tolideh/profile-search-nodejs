@@ -39,7 +39,6 @@ Maze.prototype.setEnd = function (x, y) {
 */
 
 Maze.prototype.setWall = function(x,y,direction) {
-    validCo = x > 0 && x <= this.width && y > 0 && y <= this.height;
     if ( validCo && this.isValidDir(direction)) {
         this.spaces[x][y].setWall(direction);
         return true;
@@ -49,5 +48,8 @@ Maze.prototype.setWall = function(x,y,direction) {
 
 Maze.prototype.isValidDir = function (direction) {
     return this.directions.indexOf(direction) !== -1;
+};
 
-
+Maze.prototype.isValidCo = function (x,y) {
+    return x > 0 && x <= this.width && y > 0 && y <= this.height;
+};
