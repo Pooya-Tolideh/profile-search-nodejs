@@ -1,1 +1,1 @@
-new m = Maze(7,5);
+let m = new Maze(7,5);
