@@ -20,16 +20,21 @@ function Maze(width, height) {
 }
 
 Maze.prototype.setStart = function (x, y, orientation) {
-    if (this.isValidDir(orientation) {
+    if (this.isValidDir(orientation)) {
+        this.startOrientation = orientation;
+    }
+
+    if (this.isValidCo(x,y)) {
         this.startX = x;
         this.startY = y;
-        this.startOrientation = orientation;
     }
 }
 
 Maze.prototype.setEnd = function (x, y) {
-    this.endX = x;
-    this.endY = y;
+    if (this.isValidCo(x,y)) {
+        this.endX = x;
+        this.endY = y;
+    }
 }
 
 /* our main program passes our maze objects
@@ -39,7 +44,7 @@ Maze.prototype.setEnd = function (x, y) {
 */
 
 Maze.prototype.setWall = function(x,y,direction) {
-    if ( validCo && this.isValidDir(direction)) {
+    if ( this.isValidCo(x,y) && this.isValidDir(direction)) {
         this.spaces[x][y].setWall(direction);
         return true;
     }
