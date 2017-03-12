@@ -94,6 +94,10 @@ Robot.prototype.canMove = function (x,y,direction) {
             break;
     }
 
+    if (!this.isValidCo(forwardX, forwardY)) {
+        return false;
+    }
+
     return true;
 
 }
