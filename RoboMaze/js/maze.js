@@ -9,6 +9,14 @@ function Maze(width, height) {
     this.startOrientation   = null;
     this.endX               = null;
     this.endY               = null;
+
+    this.spaces = [];
+    for (let x = 1; x <= width; x++) {
+        this.spaces[x] = [];
+        for (let y = 1; y <= height; y++) {
+            this.spaces[x][y] = `(${x},${y})`;
+        }
+    }
 }
 
 Maze.prototype.setStart = function (x, y, orientation) {
