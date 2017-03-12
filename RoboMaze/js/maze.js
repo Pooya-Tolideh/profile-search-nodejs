@@ -65,12 +65,33 @@ Maze.prototype.isValidCo = function (x,y) {
 
 
 Robot.prototype.canMove = function (x,y,direction) {
+    let forwardX, forwardY;
+
     if (!this.isValidDir(direction)) {
         return false;
     }
 
     if (!this.isValidCo(x,y)) {
         return false;
+    }
+
+    switch (direction) {
+        case "north":
+            forwardX = x;
+            forwardY = y + 1;
+            break;
+        case "east":
+            forwardX = x + 1;
+            forwardY = y;
+            break;
+        case "south":
+            forwardX = x;
+            forwardY = y - 1;
+            break;
+        case "west":
+            forwardX = x - 1;
+            forwardY = y;
+            break;
     }
 
     return true;
