@@ -17,3 +17,8 @@ Maze.prototype.setStart = function (x, y, orientation) {
     this.startOrientation = orientation;
 }
 
+Maze.prototype.setEnd = function (x, y) {
+    this.endX = x;
+    this.endY = y;
+}
+
