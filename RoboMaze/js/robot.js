@@ -8,7 +8,37 @@ function Robot() {
 }
 
 Robot.prototype.setMaze = function (maze) {
+    // this.maze = maze;
     this.x = maze.startX;
     this.y = maze.startY;
     this.orientation = maze.startOrientation;
+}
+
+Robot.prototype.turnRight = function () {
+    // if (!this.maze) {
+    //     return false
+    // }
+    const rights = {
+        north: "east",
+        east: "south",
+        south: "west",
+        west: "north"
+    };
+    this.orientation = rights[this.orientation];
+    return true;
+}
+
+Robot.prototype.turnLeft = function () {
+    // if (!this.maze) {
+    //     return false
+    // }
+    const lefts = {
+        north: "west",
+        east: "north",
+        south: "east",
+        west: "south"
+    };
+
+    this.orientation = lefts[this.orientation];
+    return true;
 }
