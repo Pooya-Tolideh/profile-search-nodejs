@@ -7,6 +7,6 @@ function MazeSpace() {
     this.south = false;
 }
 
-MazeSpace.prototype.setWall() = function(direction) {
+MazeSpace.prototype.setWall = function(direction) {
     this.[direction] = true;
 }
