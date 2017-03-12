@@ -19,22 +19,26 @@ function Maze(width, height) {
     }
 }
 
+
 Maze.prototype.setStart = function (x, y, orientation) {
-    if (this.isValidDir(orientation)) {
-        this.startOrientation = orientation;
+    if (!(this.isValidDir(orientation) && this.isValidCo(x,y))) {
+        return false;
     }
 
-    if (this.isValidCo(x,y)) {
-        this.startX = x;
-        this.startY = y;
-    }
+    this.startOrientation = orientation;
+    this.startX = x;
+    this.startY = y;
+    return true;
 }
 
+
 Maze.prototype.setEnd = function (x, y) {
-    if (this.isValidCo(x,y)) {
-        this.endX = x;
-        this.endY = y;
+    if (!this.isValidCo(x,y)) {
+        return false;
     }
+    this.endX = x;
+    this.endY = y;
+    return true;
 }
 
 /* our main program passes our maze objects
