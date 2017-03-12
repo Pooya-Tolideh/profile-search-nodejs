@@ -30,3 +30,13 @@ Maze.prototype.setEnd = function (x, y) {
     this.endY = y;
 }
 
+/* our main program passes our maze objects
+   coordinates of a space that needs a wall
+   then maze chooses that individual space
+   and passes it the  wall direction through setWall method.
+*/
+
+Maze.prototype.setWall = function(x,y,direction) {
+    this.spaces[x][y].setWall(direction);
+}
+
