@@ -62,3 +62,17 @@ Maze.prototype.isValidDir = function (direction) {
 Maze.prototype.isValidCo = function (x,y) {
     return x > 0 && x <= this.width && y > 0 && y <= this.height;
 };
+
+
+Robot.prototype.canMove = function (x,y,direction) {
+    if (!this.isValidDir(direction)) {
+        return false;
+    }
+
+    if (!this.isValidCo(x,y)) {
+        return false;
+    }
+
+    return true;
+
+}
