@@ -1,4 +1,5 @@
 let m = new Maze(7,5);
+let r = new Robot();
 
 m.setStart(1,1,"north");
 m.setEnd(7,1);
@@ -28,3 +29,5 @@ m.setWall(6,3,"east");
 m.setWall(6,4,"north");
 m.setWall(7,3,"north");
 m.setWall(7,4,"north");
+
+
