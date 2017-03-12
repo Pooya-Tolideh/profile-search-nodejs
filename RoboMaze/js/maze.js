@@ -9,12 +9,12 @@ function Maze(width, height) {
     this.startOrientation   = null;
     this.endX               = null;
     this.endY               = null;
-
+    this.directions = ["north", "south", "east", "west"];
     this.spaces = [];
     for (let x = 1; x <= width; x++) {
         this.spaces[x] = [];
         for (let y = 1; y <= height; y++) {
-            this.spaces[x][y] = new MazeSpace();
+            this.spaces[x][y] = new MazeSpace(this.directions);
         }
     }
 }
@@ -38,7 +38,7 @@ Maze.prototype.setEnd = function (x, y) {
 
 Maze.prototype.setWall = function(x,y,direction) {
     validCo = x > 0 && x <= this.width && y > 0 && y <= this.height;
-    validDir = ["north", "south", "east", "west"].indexOf(direction) !== -1;
+    validDir = this.directions.indexOf(direction) !== -1;
 
     if ( validCo && validDir ) {
         this.spaces[x][y].setWall(direction);
