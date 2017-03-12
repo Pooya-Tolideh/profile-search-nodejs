@@ -1,10 +1,9 @@
 "user strict";
 
-function MazeSpace() {
-    this.north = false;
-    this.east = false;
-    this.west = false;
-    this.south = false;
+function MazeSpace(directions) {
+    for (let i = 0; i <directions.length; i++) {
+        this[directions[i]] = false;
+    }
 }
 
 MazeSpace.prototype.setWall = function (direction) {
