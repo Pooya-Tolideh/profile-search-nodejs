@@ -47,3 +47,7 @@ Maze.prototype.setWall = function(x,y,direction) {
     return false;
 }
 
+Maze.prototype.isValidDir = function (direction) {
+    return this.directions.indexOf(direction) !== -1;
+
+
