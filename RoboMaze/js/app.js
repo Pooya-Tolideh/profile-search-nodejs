@@ -4,6 +4,7 @@ let r = new Robot();
 
 m.setStart(1,1,"north");
 m.setEnd(7,1);
+r.setMaze(m);
 
 m.setWall(1,1,"east");
 m.setWall(1,3,"north");
