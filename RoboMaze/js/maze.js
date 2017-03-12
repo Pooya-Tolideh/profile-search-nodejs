@@ -65,7 +65,7 @@ Maze.prototype.isValidCo = function (x,y) {
 
 
 Robot.prototype.canMove = function (x,y,direction) {
-    let forwardX, forwardY;
+    let forwardX, forwardY, forwardWall;
 
     if (!this.isValidDir(direction)) {
         return false;
@@ -98,6 +98,8 @@ Robot.prototype.canMove = function (x,y,direction) {
         return false;
     }
 
-    return true;
+    if (this.spaces[x][y][direction]) {
+        return true;
+    }
 
 }
