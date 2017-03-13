@@ -73,15 +73,20 @@ Robot.prototype.canMoveForward = function () {
     return this.maze.canMove(this.x, this.y, this.orientation);
 }
 
-Robot.prototype.exitMaze = function () {
+Robot.prototype.exitMaze = function (steps) {
     if (this.maze) {
-        while (this.x !== this.maze.endX || this.y !== this.maze.endY) {
-            if (this.canMoveForward) {
+        while (!steps) {
+            if (this.x !== this.maze.endX || this.y !== this.maze.endY) {
+                return true;
+                break;
+            } else if (this.canMoveForward) {
                this.moveForward();
                this.turnLeft();
             } else {
                 this.turnRight();
             }
+            steps--;
+            return false;
         }
     }
 
