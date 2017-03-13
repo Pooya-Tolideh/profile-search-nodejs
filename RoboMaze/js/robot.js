@@ -8,16 +8,16 @@ function Robot() {
 }
 
 Robot.prototype.setMaze = function (maze) {
-    // this.maze = maze;
+    this.maze = maze;
     this.x = maze.startX;
     this.y = maze.startY;
     this.orientation = maze.startOrientation;
 }
 
 Robot.prototype.turnRight = function () {
-    // if (!this.maze) {
-    //     return false
-    // }
+    if (!this.maze) {
+        return false
+    }
     const rights = {
         north: "east",
         east: "south",
@@ -44,9 +44,9 @@ Robot.prototype.turnLeft = function () {
 }
 
 Robot.prototype.moveForward = function () {
-    if (!this.canMoveForward()) {
-        return false;
-    }
+    // if (!this.canMoveForward()) {
+    //     return false;
+    // }
 
     switch(this.orientation) {
         case "north":
@@ -62,6 +62,8 @@ Robot.prototype.moveForward = function () {
             this.x--;
             break;
     }
+
+    return true;
 }
 
 Robot.prototype.canMoveForward = function () {
@@ -69,4 +71,18 @@ Robot.prototype.canMoveForward = function () {
         return false;
     }
     return this.maze.canMove(this.x, this.y, this.orientation);
+}
+
+Robot.prototype.exitMaze = function () {
+    if (this.maze) {
+        while (this.x !== this.maze.endX || this.y !== this.maze.endY) {
+            if (this.canMoveForward) {
+               this.moveForward();
+               this.turnLeft();
+            } else {
+                this.turnRight();
+            }
+        }
+    }
+
 }
