@@ -4,7 +4,7 @@ function Robot() {
     this.x = null;
     this.y = null;
     this.orientation = null;
-    // this.maze = null;
+    this.maze = null;
 }
 
 Robot.prototype.setMaze = function (maze) {
@@ -29,9 +29,9 @@ Robot.prototype.turnRight = function () {
 }
 
 Robot.prototype.turnLeft = function () {
-    // if (!this.maze) {
-    //     return false
-    // }
+    if (!this.maze) {
+        return false
+    }
     const lefts = {
         north: "west",
         east: "north",
@@ -58,4 +58,11 @@ Robot.prototype.moveForward = function () {
             this.x--;
             break;
     }
+}
+
+Robot.prototype.canMoveForward = function () {
+    if (!this.maze){
+        return false;
+    }
+    return this.maze.canMove(this.x, this.y, this.orientation);
 }
