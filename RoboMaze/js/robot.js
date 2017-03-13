@@ -44,6 +44,10 @@ Robot.prototype.turnLeft = function () {
 }
 
 Robot.prototype.moveForward = function () {
+    if (!this.canMoveForward()) {
+        return false;
+    }
+
     switch(this.orientation) {
         case "north":
             this.y++;
