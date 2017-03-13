@@ -79,18 +79,22 @@ Robot.prototype.canMove = function (x,y,direction) {
         case "north":
             forwardX = x;
             forwardY = y + 1;
+            forwardWall = "south";
             break;
         case "east":
             forwardX = x + 1;
             forwardY = y;
+            forwardWall = "west";
             break;
         case "south":
             forwardX = x;
             forwardY = y - 1;
+            forwardWall = "north";
             break;
         case "west":
             forwardX = x - 1;
             forwardY = y;
+            forwardWall = "east";
             break;
     }
 
@@ -98,8 +102,10 @@ Robot.prototype.canMove = function (x,y,direction) {
         return false;
     }
 
-    if (this.spaces[x][y][direction]) {
-        return true;
+    if (this.spaces[x][y][direction] || this.spaces[forwardX][forwardY][forwardWall]) {
+        return false;
     }
+
+    return true;
 
 }
