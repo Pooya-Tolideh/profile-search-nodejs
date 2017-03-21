@@ -14,4 +14,15 @@ function homeRoute(req, res) {
         res.end('Footer');
     }
 }
+
+function userRoute(req, res) {
+    let username = req.url.replace('', '/');
+    if (username.length > 0) {
+            res.writeHead(200, {'Content-Type' : 'text/plain'});
+            res.write('Header\n');
+            res.write('username\n');
+            res.end('Footer');
+    }
+
+}
 console.log('./END');
