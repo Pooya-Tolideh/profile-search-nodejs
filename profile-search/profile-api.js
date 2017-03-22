@@ -6,6 +6,7 @@ const util = require('util');
 
 function Profile(username) {
     this.url = `https://teamtreehouse.com/${username}.json`
+    events.EventEmitter.call(this);
 }
 
 util.inherits(Profile, events.EventEmitter);
