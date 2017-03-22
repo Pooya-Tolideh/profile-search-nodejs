@@ -1,4 +1,4 @@
-const home = function (req, res) {
+const homeRoute = function (req, res) {
     if (req.url === "/") {
         res.writeHead(200, {'Content-Type' : 'text/plain'});
         res.write('Header\n');
@@ -7,17 +7,17 @@ const home = function (req, res) {
     }
 };
 
-const user = function (req, res) {
-    let username = req.url.replace('', '/');
+const userRoute = function (req, res) {
+    let username = req.url.replace('/', '');
     if (username.length > 0) {
             res.writeHead(200, {'Content-Type' : 'text/plain'});
             res.write('Header\n');
-            res.write('username\n');
+            res.write(`${username}\n`);
             res.end('Footer');
     }
 };
 
-module.export = {
-    userRoute : home,
-    homeRoute : user
+module.exports = {
+    user : userRoute,
+    home : homeRoute
 }
