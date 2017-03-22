@@ -1,3 +1,5 @@
+const Profile = require('./profile-api.js');
+
 const homeRoute = function (req, res) {
     if (req.url === "/") {
         res.writeHead(200, {'Content-Type' : 'text/plain'});
@@ -21,3 +23,4 @@ module.exports = {
     user : userRoute,
     home : homeRoute
 }
+
