@@ -1,4 +1,6 @@
 const Profile = require('./profile-api.js');
+const extractInfo = require('./extract-info')
+
 
 const homeRoute = function (req, res) {
     if (req.url === "/") {
@@ -16,11 +18,11 @@ const userRoute = function (req, res) {
             res.write('Header\n');
             const studentProfile = new Profile('pooyatolideh');
             studentProfile.on('api-received', profile => {
-                res.write(JSON.stringify(profile));
+                const studentInfo = extractInfo(profile);
+                res.write(JSON.stringify(studentInfo));
                 res.end('Footer');
             });
             studentProfile.getInfo();
-
     }
 };
 
