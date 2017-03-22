@@ -16,10 +16,11 @@ const userRoute = function (req, res) {
             res.write('Header\n');
             const studentProfile = new Profile('pooyatolideh');
             studentProfile.on('api-received', profile => {
-                console.log(profile);
+                res.write(JSON.stringify(profile));
+                res.end('Footer');
             });
             studentProfile.getInfo();
-            res.end('Footer');
+
     }
 };
 
