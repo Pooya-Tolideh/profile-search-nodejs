@@ -23,4 +23,6 @@ Profile.prototype.getInfo = function () {
     });
 }
 
+module.exports = Profile;
+
 
