@@ -14,7 +14,11 @@ const userRoute = function (req, res) {
     if (username.length > 0) {
             res.writeHead(200, {'Content-Type' : 'text/plain'});
             res.write('Header\n');
-            res.write(`${username}\n`);
+            const studentProfile = new Profile('pooyatolideh');
+            studentProfile.on('api-received', profile => {
+                console.log(profile);
+            });
+            studentProfile.getInfo();
             res.end('Footer');
     }
 };
