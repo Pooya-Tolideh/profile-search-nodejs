@@ -1,7 +1,7 @@
 console.log('./START');
 
 const http = require('http');
-const router = require('./router.js');
+const router = require('./controllers/router.js');
 
 http.createServer((req, res) => {
     try {
