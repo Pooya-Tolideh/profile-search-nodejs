@@ -1,13 +1,15 @@
 const Profile = require('./profile-api.js');
-const extractInfo = require('./extract-info')
+const extractInfo = require('./extract-info');
+const render = require('./render.js');
 
 
 const homeRoute = function (req, res) {
     if (req.url === "/") {
         res.writeHead(200, {'Content-Type' : 'text/plain'});
-        res.write('Header\n');
-        res.write('Search Here...\n');
-        res.end('Footer');
+        render('header', {}, res);
+        render('search', stuInfo ,res);
+        render('footer', {}, res);
+        res.end();
         console.log('./HOME END');
     }
 };
@@ -22,8 +24,10 @@ const userRoute = function (req, res) {
                 const studentProfile = new Profile(username);
                 studentProfile.on('api-received', profile => {
                     const stuInfo = extractInfo(profile);
-                    res.write(`${stuInfo.username} has ${stuInfo.badges} badges`);
-                    res.end('Footer');
+                    render('header', {}, res);
+                    render('profile', stuInfo ,res);
+                    render('footer', {}, res);
+                    res.end();
                     console.log('./USER END');
                 });
                 studentProfile.getInfo();
