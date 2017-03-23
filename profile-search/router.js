@@ -52,8 +52,8 @@ const userRoute = function (req, res) {
                 studentProfile.getInfo();
                 studentProfile.on('status', status => {
                     if (status !== 200) {
-                        console.log('ERROR')
-                        render('error', {error: status}, res);
+                        res.writeHead(303, {'Location' : '/'});
+                        errHandler.status = status;
                         res.end();
                     }
                 });
