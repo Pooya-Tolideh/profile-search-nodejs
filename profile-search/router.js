@@ -20,7 +20,6 @@ const userRoute = function (req, res) {
                          req.url === '/service-worker.js';
         if (username.length > 0 && !(miscUrls)) {
                 res.writeHead(200, {'Content-Type' : 'text/html'});
-                res.write('Header\n');
                 const studentProfile = new Profile(username);
                 studentProfile.on('api-received', profile => {
                     const stuInfo = extractInfo(profile);
