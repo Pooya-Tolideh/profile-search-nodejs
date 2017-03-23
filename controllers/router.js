@@ -9,7 +9,7 @@ let errHandler = { status: 200}
 
 const serveCSS = function (req, res) {
     if (req.url.indexOf('css') !== -1) {
-        const css = fs.createReadStream(__dirname + req.url);
+        const css = fs.createReadStream('./' + req.url);
         css.pipe(res);
     }
 };
