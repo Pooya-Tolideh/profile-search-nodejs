@@ -1,10 +1,23 @@
 const Profile = require('./profile-api.js');
 const extractInfo = require('./extract-info');
 const render = require('./render.js');
+const querystring = require('querystring');
+
 
 
 const homeRoute = function (req, res) {
-    if (req.url === "/") {
+    if (req.url === "/" && req.method.toLowerCase() === 'post') {
+        //Get the request body
+        req.on('data', formBody => {
+            //parse the query passed in the body
+            const query = querystring.parse(formBody.toString());
+            //redirect to the userRoute
+            res.writeHead(303, {'Location' : `/${query.username}`});
+            res.end();
+            console.log('./POST END');
+        });
+
+    } else if (req.url === "/" ) {
         res.writeHead(200, {'Content-Type' : 'text/html'});
         render('header', {}, res);
         render('search', {} ,res);
