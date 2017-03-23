@@ -5,7 +5,7 @@ const render = require('./render.js');
 
 const homeRoute = function (req, res) {
     if (req.url === "/") {
-        res.writeHead(200, {'Content-Type' : 'text/plain'});
+        res.writeHead(200, {'Content-Type' : 'text/html'});
         render('header', {}, res);
         render('search', stuInfo ,res);
         render('footer', {}, res);
@@ -19,7 +19,7 @@ const userRoute = function (req, res) {
         const miscUrls = req.url === '/favicon.ico' ||
                          req.url === '/service-worker.js';
         if (username.length > 0 && !(miscUrls)) {
-                res.writeHead(200, {'Content-Type' : 'text/plain'});
+                res.writeHead(200, {'Content-Type' : 'text/html'});
                 res.write('Header\n');
                 const studentProfile = new Profile(username);
                 studentProfile.on('api-received', profile => {
