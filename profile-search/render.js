@@ -2,7 +2,6 @@ const fs = require('fs');
 
 function merge(template, values) {
     for (key in values) {
-        console.log(key, values[key]);
         template = template.replace(`{{${key}}}` , values[key]);
     }
     return template;
