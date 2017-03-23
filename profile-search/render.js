@@ -12,7 +12,8 @@ function render (fileName, values ,res) {
     let templateFile = fs.readFileSync(__dirname + '/views/' + `${fileName}.html`, 'utf8');
 
     //replace in the values
-    templateFile = merge(templateFile, values);
+
+    templateFile = values === null ? templateFile : merge(templateFile, values);
 
     //send the response
     res.write(templateFile);
