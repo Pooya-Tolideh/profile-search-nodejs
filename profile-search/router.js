@@ -7,7 +7,7 @@ const homeRoute = function (req, res) {
     if (req.url === "/") {
         res.writeHead(200, {'Content-Type' : 'text/html'});
         render('header', {}, res);
-        render('search', stuInfo ,res);
+        render('search', {} ,res);
         render('footer', {}, res);
         res.end();
         console.log('./HOME END');
