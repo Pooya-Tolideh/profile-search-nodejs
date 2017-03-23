@@ -10,4 +10,7 @@ http.createServer((req, res) => {
     } catch (error) {console.log(error.message)}
 }).listen(3000);
 
-console.log('./END');
+console.log('./SERVER ON');
+
+
+// } catch(error) {console.log(error.message)}
