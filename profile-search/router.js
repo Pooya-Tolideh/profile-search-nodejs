@@ -14,7 +14,9 @@ const homeRoute = function (req, res) {
 
 const userRoute = function (req, res) {
         let username = req.url.replace('/', '');
-        if (username.length > 0) {
+        const miscUrls = req.url === '/favicon.ico' ||
+                         req.url === '/service-worker.js';
+        if (username.length > 0 && !(miscUrls)) {
                 res.writeHead(200, {'Content-Type' : 'text/plain'});
                 res.write('Header\n');
                 const studentProfile = new Profile(username);
