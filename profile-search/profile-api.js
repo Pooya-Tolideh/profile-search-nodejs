@@ -5,7 +5,7 @@ const util = require('util');
 
 
 function Profile(username) {
-    this.url = `https://teamtreehouse.com/${username}.json`
+    this.url = `https://teamtreehouse.com/${username}.json`;
     events.EventEmitter.call(this);
 }
 
