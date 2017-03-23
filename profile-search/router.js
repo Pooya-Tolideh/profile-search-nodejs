@@ -4,6 +4,7 @@ const render = require('./render.js');
 const querystring = require('querystring');
 
 
+let errHandler = { status: 200}
 
 const homeRoute = function (req, res) {
     if (req.url === "/" && req.method.toLowerCase() === 'post') {
