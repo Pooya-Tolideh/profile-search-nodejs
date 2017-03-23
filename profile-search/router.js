@@ -21,6 +21,12 @@ const homeRoute = function (req, res) {
     } else if (req.url === "/" ) {
         res.writeHead(200, {'Content-Type' : 'text/html'});
         render('header', {}, res);
+        //print error if status is not OK
+        if (errHandler.status !== 200) {
+            render('error', {error: errHandler.status} , res);
+            //reset the handler
+            errHandler.status = 200;
+        }
         render('search', {} ,res);
         render('footer', {}, res);
         res.end();
