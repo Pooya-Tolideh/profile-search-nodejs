@@ -2,9 +2,17 @@ const Profile = require('./profile-api.js');
 const extractInfo = require('./extract-info');
 const render = require('./render.js');
 const querystring = require('querystring');
+const fs = require('fs');
 
 
 let errHandler = { status: 200}
+
+const serveCSS = function (req, res) {
+    if (req.url.indexOf('css') !== -1) {
+        const css = fs.createReadStream(__dirname + req.url);
+        css.pipe(res);
+    }
+};
 
 const homeRoute = function (req, res) {
     if (req.url === "/" && req.method.toLowerCase() === 'post') {
@@ -37,7 +45,8 @@ const homeRoute = function (req, res) {
 const userRoute = function (req, res) {
         let username = req.url.replace('/', '');
         const miscUrls = req.url === '/favicon.ico' ||
-                         req.url === '/service-worker.js';
+                         req.url === '/service-worker.js' ||
+                         req.url.indexOf('css') !== -1;
         if (username.length > 0 && !(miscUrls)) {
                 res.writeHead(200, {'Content-Type' : 'text/html'});
                 const studentProfile = new Profile(username);
@@ -62,6 +71,7 @@ const userRoute = function (req, res) {
 
 module.exports = {
     user : userRoute,
-    home : homeRoute
+    home : homeRoute,
+    serveCSS: serveCSS
 }
 
