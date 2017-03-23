@@ -1,6 +1,6 @@
 const Profile = require('./profile-api.js');
 const extractInfo = require('./extract-info');
-const render = require('./render.js');
+const render = require('../views/render.js');
 const querystring = require('querystring');
 const fs = require('fs');
 
