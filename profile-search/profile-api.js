@@ -18,8 +18,14 @@ Profile.prototype.getInfo = function () {
             body += packet.toString();
         });
         req.on('end', () => {
-            const profile = JSON.parse(body);
-            this.emit('api-received', profile);
+            if (req.statusCode === 200) {
+                const profile = JSON.parse(body);
+                this.emit('api-received', profile);
+            } else {
+                const statusErr = new Error();
+                statusErr.message = `${req.statusCode}`;
+                console.log(statusErr.message);
+            }
         });
     });
 }
