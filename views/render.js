@@ -9,7 +9,7 @@ function merge(template, values) {
 
 function render (fileName, values ,res) {
     //get the html templates
-    let templateFile = fs.readFileSync(__dirname + '/views/' + `${fileName}.html`, 'utf8');
+    let templateFile = fs.readFileSync(__dirname + '/templates/' + `${fileName}.html`, 'utf8');
 
     //replace in the values
 
