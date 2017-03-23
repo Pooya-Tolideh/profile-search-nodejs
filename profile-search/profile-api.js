@@ -13,6 +13,8 @@ util.inherits(Profile, events.EventEmitter);
 
 Profile.prototype.getInfo = function () {
     https.get(this.url, req => {
+        //return the request status for error handling
+        this.emit('status', req.statusCode);
         let body = '';
         req.on('data', packet => {
             body += packet.toString();
@@ -21,10 +23,6 @@ Profile.prototype.getInfo = function () {
             if (req.statusCode === 200) {
                 const profile = JSON.parse(body);
                 this.emit('api-received', profile);
-            } else {
-                const statusErr = new Error();
-                statusErr.message = `${req.statusCode}`;
-                console.log(statusErr.message);
             }
         });
     });
