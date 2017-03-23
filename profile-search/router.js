@@ -43,6 +43,13 @@ const userRoute = function (req, res) {
                     console.log('./USER END');
                 });
                 studentProfile.getInfo();
+                studentProfile.on('status', status => {
+                    if (status !== 200) {
+                        console.log('ERROR')
+                        render('error', {error: status}, res);
+                        res.end();
+                    }
+                });
             }
 };
 
